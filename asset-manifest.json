@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Full-Stack-React-App-2/static/css/main.be50fcda.chunk.css",
+    "main.js": "/Full-Stack-React-App-2/static/js/main.1ccab189.chunk.js",
+    "main.js.map": "/Full-Stack-React-App-2/static/js/main.1ccab189.chunk.js.map",
+    "runtime-main.js": "/Full-Stack-React-App-2/static/js/runtime-main.e9c8cb88.js",
+    "runtime-main.js.map": "/Full-Stack-React-App-2/static/js/runtime-main.e9c8cb88.js.map",
+    "static/js/2.b65f5717.chunk.js": "/Full-Stack-React-App-2/static/js/2.b65f5717.chunk.js",
+    "static/js/2.b65f5717.chunk.js.map": "/Full-Stack-React-App-2/static/js/2.b65f5717.chunk.js.map",
+    "static/js/3.0f53e0fa.chunk.js": "/Full-Stack-React-App-2/static/js/3.0f53e0fa.chunk.js",
+    "static/js/3.0f53e0fa.chunk.js.map": "/Full-Stack-React-App-2/static/js/3.0f53e0fa.chunk.js.map",
+    "index.html": "/Full-Stack-React-App-2/index.html",
+    "static/css/main.be50fcda.chunk.css.map": "/Full-Stack-React-App-2/static/css/main.be50fcda.chunk.css.map",
+    "static/js/2.b65f5717.chunk.js.LICENSE.txt": "/Full-Stack-React-App-2/static/js/2.b65f5717.chunk.js.LICENSE.txt",
+    "static/media/no-img.d6a64ff8.png": "/Full-Stack-React-App-2/static/media/no-img.d6a64ff8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e9c8cb88.js",
+    "static/js/2.b65f5717.chunk.js",
+    "static/css/main.be50fcda.chunk.css",
+    "static/js/main.1ccab189.chunk.js"
+  ]
+}
