@@ -19,7 +19,7 @@ import signup from './pages/signup'
 import user from './pages/user'
 
 import axios from 'axios';
-axios.defaults.baseurl = "https://us-central1-social-media-app-2-9a691.cloudfunctions.net/api";
+axios.defaults.baseURL = "https://us-central1-social-media-app-2-9a691.cloudfunctions.net/api";
 
 const theme = createMuiTheme(themeFile);
 
