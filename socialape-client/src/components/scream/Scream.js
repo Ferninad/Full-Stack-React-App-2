@@ -63,7 +63,7 @@ export class Scream extends Component {
                 <CardContent>
                     <Typography variant='h5' 
                         component={Link} 
-                        to={`/users/${userHandle}`} 
+                        to={`/user/${userHandle}`} 
                         color='primary'>
                         {userHandle}
                     </Typography>
