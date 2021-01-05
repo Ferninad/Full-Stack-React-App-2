@@ -16,6 +16,7 @@ const {
         addUserDetails,
         getAuthenticatedUser,
         getUserDetails,
+        followUser,
         markNotificationsRead
       } = require('./handlers/users');
 
@@ -33,6 +34,7 @@ app.post('/user/image', FBAuth, uploadImage);
 app.post('/user', FBAuth, addUserDetails);
 app.get('/user', FBAuth, getAuthenticatedUser);
 app.get('/user/:handle', getUserDetails);
+app.get('/user/:handle/follow', followUser);
 app.post('/notifications', FBAuth, markNotificationsRead);
 
 

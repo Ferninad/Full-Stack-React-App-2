@@ -39,7 +39,8 @@ exports.signup = (req, res) => {
         email: newUser.email,
         imageUrl: `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${noImg}?alt=media`,
         createdAt: new Date().toISOString(),
-        userId
+        userId,
+        followCount: 0
       };
       return db.doc(`/users/${newUser.handle}`).set(userCredentials);
     }).then(() => {
@@ -189,6 +190,48 @@ exports.uploadImage = (req, res) => {
         });
     });
     busboy.end(req.rawBody);
+};
+
+exports.followUser = (req, res) => {
+  const followDocument = db.collection('follows').where('userHandle', '==', req.user.handle)
+    .where('following', '==', req.params.following).limit(1);
+  
+  const userDocument = db.doc(`/user/${req.params.following}`);
+
+  let userData;
+
+  userDocument.get().then(doc => {
+    if(doc.exists){
+      userData = doc.data();
+      userData.following = doc.id;
+      return followDocument.get();
+    } else {
+      return res.status(404).json({ error: 'Scream not found'});
+    }
+  }).then(data => {
+    userData.follows = []
+    data.forEach((doc) => {
+      userData.follows.push(doc.data())
+    })
+    return followDocument.get()
+  }).then(data => {
+    if(data.empty){
+      return db.collection('follows').add({
+        following: req.params.following,
+        userHandle: req.user.handle
+      }).then(() => {
+        userData.followCount++;
+        return userDocument.update({ followCount: userData.followCount });
+      }).then(() => {
+        return res.json(userData);
+      });
+    } else{
+      return res.status(400).json({ error: 'User already followed'});
+    }
+  }).catch(err => {
+    console.error(err);
+    res.status(500).json({ error: err.code});
+  });
 };
 
 exports.markNotificationsRead = (req, res) => {

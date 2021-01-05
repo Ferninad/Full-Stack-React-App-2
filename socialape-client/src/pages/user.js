@@ -24,7 +24,6 @@ class user extends Component {
 
         this.props.getUserData(handle)
         axios.get(`/user/${handle}`).then(res => {
-            console.log("WOW")
             this.setState({
                 profile: res.data.user
             })
@@ -55,7 +54,6 @@ class user extends Component {
                     {this.state.profile === null ? (
                         <ProfileSkeleton/>
                     ) : (
-                        console.log("WOW"),
                         <StaticProfile profile={this.state.profile}/>
                     )}
                 </Grid>
