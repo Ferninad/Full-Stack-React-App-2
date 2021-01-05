@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import Scream from '../components/scream/Scream'
 import StaticProfile from '../components/profile/StaticProfile'
+import Profile from '../components/profile/Profile'
 import Grid from '@material-ui/core/Grid'
 
 import ScreamSkeleton from '../util/ScreamSkeleton'
@@ -32,6 +33,12 @@ class user extends Component {
     render() {
         const { screams, loading } = this.props.data
         const { screamIdParam } = this.state
+        const {
+            user: {
+                authenticated,
+                credentials: { handle }
+            } 
+        } = this.props
         const screamsMarkup = loading ? (
             <ScreamSkeleton/>
         ) : screams === null ? (
@@ -45,6 +52,9 @@ class user extends Component {
                 else return <Scream key={scream.screamId} scream={scream} openDialog/>
             })
         )
+        const profile = authenticated && this.props.match.params.handle === handle ? (
+            <Profile/>
+        ) : <StaticProfile profile={this.state.profile}/>
         return (
             <Grid container spacing={10}>
                 <Grid item sm={8} xs={12}>
@@ -54,7 +64,7 @@ class user extends Component {
                     {this.state.profile === null ? (
                         <ProfileSkeleton/>
                     ) : (
-                        <StaticProfile profile={this.state.profile}/>
+                        profile
                     )}
                 </Grid>
             </Grid>
@@ -68,7 +78,8 @@ user.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    data: state.data
+    data: state.data,
+    user: state.user
 })
 
 export default connect(mapStateToProps, {getUserData})(user)
